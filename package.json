@@ -1,0 +1,48 @@
+{
+  "name": "imgcruncher",
+  "version": "1.0.5",
+  "main": "dist/index.min.js",
+  "module": "dist/index.min.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arunraj20it/imgcruncher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arunraj20it/imgcruncher/issues",
+    "email": "arunraj23it@gmail.com"
+  },
+  "homepage": "https://github.com/your-username/your-repo#readme",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "minify": "terser dist/index.js -o dist/index.min.js --compress --mangle",
+    "prepare": "npm run build && npm run minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "image",
+    "compression",
+    "compressor",
+    "canvas",
+    "base64",
+    "resize",
+    "client-side",
+    "web",
+    "image optimizer",
+    "image upload",
+    "typescript"
+  ],
+  "author": "Arun",
+  "license": "MIT",
+  "description": "A lightweight image compression tool using canvas and base64 for React and web apps.",
+  "devDependencies": {
+    "@types/node": "^24.2.0",
+    "eslint": "^9.32.0",
+    "terser": "^5.43.1",
+    "typescript": "^5.9.2"
+  }
+}
