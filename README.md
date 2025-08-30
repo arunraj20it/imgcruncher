@@ -89,9 +89,15 @@ If you face any issues, please:
 | `quality`   | number | `0.6`   | Compression quality (0 to 1)        |
 | `maxWidth`  | number | `1920`  | Optional max width of output image  |
 | `maxHeight` | number | `1080`  | Optional max height of output image |
-| `Unit`      | string |  `KB`   | Returns Img size in bytes, KB or MB | 
 
 Returns: `Promise<string>` (Compressed Base64)
+
+
+### `getImgBase64Size(base64, unit)`
+| Name        | Type   | Default | Description                         |
+| ----------- | ------ | ------- | ----------------------------------- |
+| `unit`      | string |  `KB`   | Returns Img size in bytes, KB or MB | 
+
 
 ---
 
