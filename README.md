@@ -80,12 +80,21 @@ If you face any issues, please:
 
 ---
 
-### 3. API
+---
 
-| Function                                            | Description                                                  |
-| --------------------------------------------------- | ------------------------------------------------------------ |
-| `imgcruncher(base64, quality, maxWidth, maxHeight)` | Compresses image and returns compressed Base64               |
-| `getImgBase64Size(base64, unit)`                    | Returns the size of a Base64 image in `bytes`, `KB`, or `MB` |
+## 🔧 API
+
+### `compressImage(base64, options)`
+
+| Name        | Type   | Default | Description                         |
+| ----------- | ------ | ------- | ----------------------------------- |
+| `base64`    | string | —       | Source base64 image string          |
+| `quality`   | number | `0.6`   | Compression quality (0 to 1)        |
+| `maxWidth`  | number | `1920`  | Optional max width of output image  |
+| `maxHeight` | number | `1080`  | Optional max height of output image |
+| `Unit`      | string |  `KB`   | Returns Img size in bytes, KB or MB | 
+
+Returns: `Promise<string>` (Compressed Base64)
 
 ---
 
@@ -93,8 +102,6 @@ If you face any issues, please:
 | :-----------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
 |                                            Chrome `49+`                                           |                                             Firefox `45+`                                            |                                          Edge `15+`                                         |                                            Safari `10+`                                           |                                           Opera `36+`                                          |
 
----
-
-## 📜 License
+## 📄 License
 
 MIT
