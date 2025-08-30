@@ -76,12 +76,14 @@ export default App;
 If you face any issues, please:
 
 * Open an [issue on GitHub](https://github.com/arunraj20it/imgcruncher/issues)
+* Or contact me at **[your-email@example.com](mailto:arunraj23it@gmail.com)**
+
 ---
 
 ### 3. API
 
-| Function                                                             |
-| ---------------------------------------------------  | Description                                | ------------------------------------------------------------ |
+| Function                                            | Description                                                  |
+| --------------------------------------------------- | ------------------------------------------------------------ |
 | `imgcruncher(base64, quality, maxWidth, maxHeight)` | Compresses image and returns compressed Base64               |
 | `getImgBase64Size(base64, unit)`                    | Returns the size of a Base64 image in `bytes`, `KB`, or `MB` |
 
