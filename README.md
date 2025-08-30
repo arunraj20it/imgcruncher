@@ -76,9 +76,6 @@ export default App;
 If you face any issues, please:
 
 * Open an [issue on GitHub](https://github.com/arunraj20it/imgcruncher/issues)
-* Or contact me at **[your-email@example.com](mailto:arunraj23it@gmail.com)**
-
----
 
 ---
 
@@ -88,7 +85,7 @@ If you face any issues, please:
 
 | Name        | Type   | Default | Description                         |
 | ----------- | ------ | ------- | ----------------------------------- |
-| `base64`    | string | —       | Source base64 image string          |
+| `base64`    | string |   —     | Source base64 image string          |
 | `quality`   | number | `0.6`   | Compression quality (0 to 1)        |
 | `maxWidth`  | number | `1920`  | Optional max width of output image  |
 | `maxHeight` | number | `1080`  | Optional max height of output image |
