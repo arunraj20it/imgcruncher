@@ -1,4 +1,3 @@
-
 # React Image Compressor (Base64)
 
 A lightweight React component to compress images using the HTML5 Canvas API and TypeScript. Works entirely in the browser using Base64 format — no server or external API required.
@@ -7,12 +6,13 @@ A lightweight React component to compress images using the HTML5 Canvas API and 
 
 ## ✨ Features
 
-- Client-side image compression using canvas
-- Input image via file upload
-- Outputs compressed Base64
-- Automatically resizes large images
-- Supports max width & height resizing
-- TypeScript support
+* Client-side image compression using canvas
+* Input image via file upload
+* Outputs compressed Base64
+* **Returns the size of the compressed image** in Bytes, KB, or MB
+* Automatically resizes large images
+* Supports max width & height resizing
+* TypeScript support
 
 ---
 
@@ -30,10 +30,11 @@ npm install imgcruncher
 
 ```tsx
 import React, { useState } from 'react';
-import { imgcruncher } from 'imgcruncher';
+import { imgcruncher, getImgBase64Size } from 'imgcruncher';
 
 function App() {
   const [compressedBase64, setCompressedBase64] = useState('');
+  const [size, setSize] = useState(0);
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
@@ -41,12 +42,12 @@ function App() {
       const reader = new FileReader();
       reader.onload = async () => {
         const base64 = reader.result;
-        const compressed = await imgcruncher(base64, 
-           0.7,      // quality
-           800,     //maxWidth
-           800,     //maxHeight
-        );
+        const compressed = await imgcruncher(base64, 0.7, 800, 800);
         setCompressedBase64(compressed);
+
+        // Get compressed image size in KB
+        const compressedSize = getImgBase64Size(compressed, "KB");
+        setSize(compressedSize);
       };
       reader.readAsDataURL(file);
     }
@@ -56,7 +57,10 @@ function App() {
     <div>
       <input type="file" accept="image/*" onChange={handleImageUpload} />
       {compressedBase64 && (
-        <img src={compressedBase64} alt="Compressed" style={{ width: 200 }} />
+        <>
+          <img src={compressedBase64} alt="Compressed" style={{ width: 200 }} />
+          <p>Compressed size: {size} KB</p>
+        </>
       )}
     </div>
   );
@@ -67,54 +71,21 @@ export default App;
 
 ---
 
-### 2. Backend Usage
+### 2. Issues & Contact
 
-```ts
-// If you want to use compression logic server-side with Node.js + JSDOM (not typical), you need additional setup
-```
+If you face any issues, please:
 
----
-
-### 3. Plain HTML + JS (No React)
-
-```html
-<input type="file" id="uploader" />
-<img id="output" width="200" />
-
-<script type="module">
-  import { imgcruncher } from 'imgcruncher';
-
-  document.getElementById('uploader').addEventListener('change', async (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = async () => {
-      const base64 = reader.result;
-      const compressed = await imgcruncher(base64, 
-           0.7,      // quality
-           800,     //maxWidth
-           800,     //maxHeight
-        );
-      document.getElementById('output').src = compressed;
-    };
-    reader.readAsDataURL(file);
-  });
-</script>
-```
+* Open an [issue on GitHub](https://github.com/your-username/your-repo/issues)
+* Or contact me at **[your-email@example.com](mailto:your-email@example.com)**
 
 ---
 
-## 🔧 API
+### 3. API
 
-### `compressImage(base64, options)`
-
-| Name        | Type   | Default | Description                         |
-| ----------- | ------ | ------- | ----------------------------------- |
-| `base64`    | string | —       | Source base64 image string          |
-| `quality`   | number | `0.6`   | Compression quality (0 to 1)        |
-| `maxWidth`  | number | `1920`  | Optional max width of output image  |
-| `maxHeight` | number | `1080`  | Optional max height of output image |
-
-Returns: `Promise<string>` (Compressed Base64)
+| Function                                            | Description                                                  |
+| --------------------------------------------------- | ------------------------------------------------------------ |
+| `imgcruncher(base64, quality, maxWidth, maxHeight)` | Compresses image and returns compressed Base64               |
+| `getImgBase64Size(base64, unit)`                    | Returns the size of a Base64 image in `bytes`, `KB`, or `MB` |
 
 ---
 
@@ -122,6 +93,8 @@ Returns: `Promise<string>` (Compressed Base64)
 | :-----------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
 |                                            Chrome `49+`                                           |                                             Firefox `45+`                                            |                                          Edge `15+`                                         |                                            Safari `10+`                                           |                                           Opera `36+`                                          |
 
-## 📄 License
+---
+
+## 📜 License
 
 MIT
